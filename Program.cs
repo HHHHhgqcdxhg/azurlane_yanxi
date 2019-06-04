@@ -8,9 +8,10 @@ namespace azurlane_yanxi
 
         public static void Main(string[] args)
         {
-            gameController g = new gameController();
-            g.check();
-
+//            gameController g = new gameController();
+//            g.get1Rank();
+            var img = new Mat("J:\\test.png", ImreadModes.Grayscale);
+            ImageHanddle.get1Rank(img);
         }
     }
 }

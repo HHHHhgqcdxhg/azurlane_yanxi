@@ -154,7 +154,7 @@ namespace azurlane_yanxi
             shell($"screencap -p /sdcard/Pictures/{c.tmpImgFileName}");
             Thread.Sleep(c.fetchImgIntervalMilliSeconds);
             Console.WriteLine($@"{c.imgSharePath}\{c.tmpImgFileName}");
-            var img = new Mat($@"{c.imgSharePath}\{c.tmpImgFileName}");
+            var img = new Mat($@"{c.imgSharePath}\{c.tmpImgFileName}",ImreadModes.Grayscale);
             
             return img;
         }

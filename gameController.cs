@@ -1,5 +1,6 @@
 using System;
 using System.Threading;
+using OpenCvSharp;
 
 namespace azurlane_yanxi
 {
@@ -7,6 +8,7 @@ namespace azurlane_yanxi
     {
         public _Config c;
         public ADBController a;
+        
 
         public gameController()
         {
@@ -26,6 +28,12 @@ namespace azurlane_yanxi
             Thread.Sleep(c.tapIntervalMilliSeconds);
             a.stopGame();
 
+        }
+
+        public int get1Rank()
+        {
+            var img = a.getScreen();
+            return ImageHanddle.get1Rank(img);
         }
     }
 }
