@@ -11,6 +11,13 @@ namespace azurlane_yanxi
         public bool getted { get; set; }
         public int wid { get; set; }
         public int hei { get; set; }
+
+        public size(int wid,int hei)
+        {
+            this.wid = wid;
+            this.hei = hei;
+            this.getted = true;
+        }
     }
     public class ADBController
     {
@@ -23,6 +30,7 @@ namespace azurlane_yanxi
         {
             p_cmd = _initCMD();
             p_adbShell = _initADBShell();
+            
             _size.getted = false;
             getSize();
         }

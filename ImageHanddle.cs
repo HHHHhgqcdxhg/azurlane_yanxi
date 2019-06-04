@@ -50,7 +50,7 @@ namespace azurlane_yanxi
             Console.WriteLine("sorted");
             foreach (var o in fuckSortedL)
             {
-                Console.WriteLine($"left: {o.left}, val: {o.val}");
+//                Console.WriteLine($"left: {o.left}, val: {o.val}");
                 value = value * 10 + o.val;
             }
 
@@ -94,6 +94,10 @@ namespace azurlane_yanxi
 
         public int get1Rank(Mat img)
         {
+            if (img.Width != 1920 || img.Height != 1080)
+            {
+                Cv2.Resize(img,img,new Size(1920,1080));
+            }
             var resultRank = new ResultRank();
 //            var raw = new Mat("J:\\test3.png");
             var rankPart = img[_get1RankRect];
