@@ -120,8 +120,7 @@ namespace azurlane_yanxi
             }
             var res = shell("wm size");
             var s = Regex.Match(res, @"(?<wid>\d+)x(?<hei>\d+)");
-            Console.WriteLine(s.Groups["wid"].ToString());
-            Console.WriteLine(s.Groups["hei"].ToString());
+            Console.WriteLine($"wm size: {s.Groups["wid"]} x {s.Groups["hei"]}");
             _size.wid = Convert.ToInt16(s.Groups["wid"].ToString());
             _size.hei = Convert.ToInt16(s.Groups["hei"].ToString());
             return _size;

@@ -8,15 +8,16 @@ namespace azurlane_yanxi
     {
         public _Config c;
         public ADBController a;
-        
+        public ImageHanddle imageHanddle;
 
         public gameController()
         {
             c = Config.init();
             a = ADBController.init();
+            imageHanddle = new ImageHanddle();
         }
         
-        public void check()
+        public int check()
         {
             a.startGame();
             Thread.Sleep(c.startIntervalSeconds * 1000);
@@ -26,14 +27,25 @@ namespace azurlane_yanxi
             Thread.Sleep(c.tapIntervalMilliSeconds);
             a.tap(1753,1013);
             Thread.Sleep(c.tapIntervalMilliSeconds);
+            var img = a.getScreen();
+            int rank = imageHanddle.get1Rank(img);
+            Console.WriteLine(rank);
             a.stopGame();
+            return rank;
+        }
 
+        public void testImg(string imgPath)
+        {
+            var img = new Mat(imgPath, ImreadModes.Grayscale);
+            int rank = imageHanddle.get1Rank(img);
+            Console.WriteLine(rank);
         }
 
         public int get1Rank()
         {
             var img = a.getScreen();
-            return ImageHanddle.get1Rank(img);
+            var imageHanddle = new ImageHanddle();
+            return imageHanddle.get1Rank(img);
         }
     }
 }
